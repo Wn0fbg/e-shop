@@ -1,6 +1,6 @@
 import Navbar from "./components/Navbar/Navbar";
 import Cart from "./pages/Cart";
-import LoginSignUp from "./pages/LoginSignUo";
+import LoginSignUp from "./pages/LoginSignUp";
 import Product from "./pages/Product";
 import Shop from "./pages/Shop";
 import ShopCategory from "./pages/ShopCategory";
