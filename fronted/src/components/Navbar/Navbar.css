@@ -28,6 +28,11 @@
   font-weight: 500;
 }
 
+.nav-menu-link {
+  text-decoration: none;
+  color: #000;
+}
+
 .nav-menu li {
   display: flex;
   flex-direction: column;
