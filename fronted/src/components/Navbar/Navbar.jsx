@@ -4,10 +4,17 @@ import logo from "../assets/logo.png";
 import cart_icon from "../assets/cart_icon.png";
 import "./Navbar.css";
 import { ShopContext } from "../../context/ShopContext";
+import nav_dropdown from "../assets/nav_dropdown.png";
 
 const Navbar = () => {
   const [menu, setMenu] = useState("shop");
   const { getTotalCartItems } = useContext(ShopContext);
+  const menuRef = useRef();
+
+  const dropdown_toggle = (e) => {
+    menuRef.current.classList.toggle("nav-menu-visible");
+    e.target.classList.toggle("open");
+  };
 
   return (
     <div className="navbar">
@@ -15,7 +22,13 @@ const Navbar = () => {
         <img src={logo} alt="" />
         <p>SHOPPER</p>
       </div>
-      <ul className="nav-menu nav__menu-is-active">
+      <img
+        className="nav-dropdown"
+        onClick={dropdown_toggle}
+        src={nav_dropdown}
+        alt=""
+      />
+      <ul ref={menuRef} className="nav-menu nav__menu-is-active">
         <li
           onClick={() => {
             setMenu("shop");

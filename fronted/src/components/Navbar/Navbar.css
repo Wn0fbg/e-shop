@@ -4,6 +4,7 @@
   padding: 16px;
   padding-inline: 165px;
   box-shadow: 0 1px 3px -2px black;
+  align-items: center;
 }
 
 .nav-logo {
@@ -148,5 +149,43 @@
   .nav-cart-count {
     width: 18px;
     height: 18px;
+  }
+}
+
+@media (max-width: 800px) {
+  .navbar {
+    padding: 10px 0;
+  }
+
+  .nav-dropdown {
+    display: block;
+    width: 30px;
+    rotate: -90deg;
+    transition: 0.5s;
+  }
+
+  .nav-menu {
+    display: none;
+    height: 80px;
+    width: 100%;
+    position: absolute;
+    background-color: #fff;
+    justify-content: center;
+    top: 50px;
+  }
+
+  .nav-menu-visible {
+    display: flex;
+  }
+
+  .nav-dropdown.open {
+    transform: rotate(90deg);
+  }
+}
+
+@media (max-width: 500px) {
+  .navbar {
+    padding: 8px 0;
+    gap: 0px;
   }
 }
