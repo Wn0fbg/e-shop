@@ -39,6 +39,7 @@ const CartItems = () => {
                   alt=""
                 />
               </div>
+              <hr />
             </div>
           );
         }
