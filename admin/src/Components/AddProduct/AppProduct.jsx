@@ -20,6 +20,27 @@ const AddProduct = () => {
     setProductDetails({ ...productDetails, [e.target.name]: e.target.value });
   };
 
+  const Add_Product = async () => {
+    console.log(productDetails);
+    let responseData;
+    let product = productDetails;
+    let formData = new FormData();
+
+    formData.append("product", image);
+    await fetch("http://localhost:4000/upload", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+      },
+      body: formData,
+    })
+      .then((resp) => resp.json())
+      .then((data) => (responseData = data));
+
+    if (responseData.success) {
+    }
+  };
+
   return (
     <div className="add-product">
       <div className="addproduct-itemfield">
@@ -83,7 +104,9 @@ const AddProduct = () => {
           hidden
         />
       </div>
-      <button className="addproduct-btn">Add product</button>
+      <button onClick={() => Add_Product()} className="addproduct-btn">
+        Add product
+      </button>
     </div>
   );
 };
