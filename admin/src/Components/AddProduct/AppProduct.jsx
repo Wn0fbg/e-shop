@@ -22,6 +22,7 @@ const AddProduct = () => {
 
   const Add_Product = async () => {
     console.log(productDetails);
+
     let responseData;
     let product = productDetails;
     let formData = new FormData();
@@ -35,9 +36,26 @@ const AddProduct = () => {
       body: formData,
     })
       .then((resp) => resp.json())
-      .then((data) => (responseData = data));
+      .then((data) => {
+        responseData = data;
+      });
 
     if (responseData.success) {
+      product.image = responseData.image_url;
+      console.log(product);
+
+      await fetch("http://localhost:4000/addproduct", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "aplication/json",
+        },
+        body: JSON.stringify(product),
+      })
+        .then((resp) => resp.json())
+        .then((data) => {
+          data.success ? alert("Product Added") : alert("Failed");
+        });
     }
   };
 
@@ -104,7 +122,12 @@ const AddProduct = () => {
           hidden
         />
       </div>
-      <button onClick={() => Add_Product()} className="addproduct-btn">
+      <button
+        onClick={() => {
+          Add_Product();
+        }}
+        className="addproduct-btn"
+      >
         Add product
       </button>
     </div>
